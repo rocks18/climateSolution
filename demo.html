@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceFlow | Interactive Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        /* Demo Specific Styles */
+        body {
+            overflow: hidden;
+        }
+
+        .demo-layout {
+            display: flex;
+            height: 100vh;
+            background: #f1f5f9;
+        }
+
+        .sidebar {
+            width: 240px;
+            background: var(--color-primary);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: var(--spacing-md);
+        }
+
+        .sidebar-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .sidebar-logo span {
+            color: var(--color-accent);
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #94a3b8;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .top-bar {
+            height: 64px;
+            background: white;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--spacing-md);
+        }
+
+        .demo-badge {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid #fcd34d;
+        }
+
+        .dashboard-grid {
+            padding: var(--spacing-md);
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto 1fr;
+            gap: var(--spacing-md);
+            height: calc(100vh - 64px);
+            overflow-y: auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .map-card {
+            grid-row: span 2;
+            position: relative;
+            overflow: hidden;
+            background: #e2e8f0;
+        }
+
+        .live-map {
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDQwaDQwVjBIMHY0MHptMjAgMjBoMjB2MjBIMjBWNjB6TTAgODBocjB2MjBIMFY4MHptMjAgMjBoMjB2MjBIMjB2LTIwek0wIDBocjB2MjBIMFYwem0yMCAyMGgyMHYyMEgyMFYyMHoiIGZpbGw9IiNjYmQ1ZTEiIGZpbGwtb3BhY2l0eT0iMC4yIi8+PC9nPjwvc3ZnPg==');
+            position: relative;
+        }
+
+        .demo-marker {
+            position: absolute;
+            transition: all 2s linear;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-sm);
+        }
+
+        .stat-box {
+            background: #f8fafc;
+            padding: var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+
+        .activity-feed {
+            overflow-y: auto;
+            max-height: 300px;
+        }
+
+        .feed-item {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .feed-icon {
+            width: 32px;
+            height: 32px;
+            background: #e0f2fe;
+            color: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .exit-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            max-width: 400px;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">Service<span>Flow</span></div>
+            <nav>
+                <div class="nav-item active"><i class="ph ph-squares-four"></i> Dashboard</div>
+                <div class="nav-item"><i class="ph ph-map-trifold"></i> Live Map</div>
+                <div class="nav-item"><i class="ph ph-ticket"></i> Tickets</div>
+                <div class="nav-item"><i class="ph ph-users"></i> Technicians</div>
+                <div class="nav-item"><i class="ph ph-chart-line-up"></i> Analytics</div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <h3>Command Center</h3>
+                <div class="demo-badge">Interactive Demo Mode</div>
+                <button class="btn btn-primary" onclick="showExitModal()">Exit Demo</button>
+            </header>
+
+            <div class="dashboard-grid">
+                <div class="card map-card">
+                    <h4>Live Fleet Tracking</h4>
+                    <div class="live-map" id="demo-map">
+                        <!-- Markers injected by JS -->
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>Real-time Stats</h4>
+                    <div class="stat-grid">
+                        <div class="stat-box">
+                            <div class="stat-number" id="active-jobs">12</div>
+                            <div class="stat-label">Active Jobs</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" id="avg-time">45m</div>
+                            <div class="stat-label">Avg Response</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>Recent Activity</h4>
+                    <div class="activity-feed" id="activity-feed">
+                        <div class="feed-item">
+                            <div class="feed-icon"><i class="ph ph-check"></i></div>
+                            <div>
+                                <div style="font-weight: 500;">Job #1024 Completed</div>
+                                <div style="font-size: 0.8rem; color: #64748b;">Tech Mike • 2m ago</div>
+                            </div>
+                        </div>
+                        <div class="feed-item">
+                            <div class="feed-icon"><i class="ph ph-warning"></i></div>
+                            <div>
+                                <div style="font-weight: 500;">New Ticket #1025</div>
+                                <div style="font-size: 0.8rem; color: #64748b;">High Priority • 5m ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="exit-modal" id="exit-modal">
+        <div class="modal-content">
+            <h2>Ready for the Real Thing?</h2>
+            <p style="color: #64748b; margin: 1rem 0;">Get full access to all features, custom branding, and API
+                integrations.</p>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                <button class="btn btn-primary" onclick="alert('Redirecting to signup...')">Start Free Trial</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Demo Logic
+
+        // 1. Live Map Simulation
+        const map = document.getElementById('demo-map');
+        const markers = [];
+
+        function createMarker(id) {
+            const el = document.createElement('div');
+            el.className = 'demo-marker';
+            el.innerHTML = `
+                <div style="width: 12px; height: 12px; background: #0ea5e9; border: 2px solid white; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"></div>
+                <div style="background: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; margin-top: 4px; white-space: nowrap;">Tech ${id}</div>
+            `;
+            map.appendChild(el);
+            return { el, x: Math.random() * 80 + 10, y: Math.random() * 80 + 10, dx: (Math.random() - 0.5) * 2, dy: (Math.random() - 0.5) * 2 };
+        }
+
+        for (let i = 1; i <= 5; i++) markers.push(createMarker(i));
+
+        setInterval(() => {
+            markers.forEach(m => {
+                m.x += m.dx;
+                m.y += m.dy;
+
+                // Bounce off walls
+                if (m.x < 5 || m.x > 95) m.dx *= -1;
+                if (m.y < 5 || m.y > 95) m.dy *= -1;
+
+                m.el.style.left = m.x + '%';
+                m.el.style.top = m.y + '%';
+            });
+        }, 100);
+
+        // 2. Activity Feed Simulation
+        const feed = document.getElementById('activity-feed');
+        const activities = [
+            { icon: 'check', text: 'Job Completed', sub: 'Tech Sarah' },
+            { icon: 'ticket', text: 'New Ticket Created', sub: 'Customer #882' },
+            { icon: 'map-pin', text: 'Arrived at Site', sub: 'Tech John' },
+            { icon: 'star', text: '5-Star Rating Received', sub: 'Job #991' }
+        ];
+
+        setInterval(() => {
+            const act = activities[Math.floor(Math.random() * activities.length)];
+            const item = document.createElement('div');
+            item.className = 'feed-item';
+            item.innerHTML = `
+                <div class="feed-icon"><i class="ph ph-${act.icon}"></i></div>
+                <div>
+                    <div style="font-weight: 500;">${act.text}</div>
+                    <div style="font-size: 0.8rem; color: #64748b;">${act.sub} • Just now</div>
+                </div>
+            `;
+            feed.insertBefore(item, feed.firstChild);
+            if (feed.children.length > 10) feed.lastChild.remove();
+
+            // Update stats randomly
+            document.getElementById('active-jobs').textContent = 10 + Math.floor(Math.random() * 5);
+        }, 3000);
+
+        // 3. Exit Modal
+        function showExitModal() {
+            document.getElementById('exit-modal').style.display = 'flex';
+        }
+    </script>
+</body>
+
+</html>

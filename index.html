@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceFlow | Smart Service Center Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Service<span class="highlight">Flow</span></div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="btn btn-secondary" aria-label="Toggle Dark Mode">
+                    <i class="ph ph-moon"></i>
+                </button>
+                <a href="#" class="btn btn-secondary">Log In</a>
+                <a href="demo.html" class="btn btn-primary">Start Free Trial</a>
+            </div>
+            <button class="mobile-menu-toggle"><i class="ph ph-list"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>Smarter Service Management for the <span class="text-gradient">Modern Era</span></h1>
+                    <p class="hero-sub">Automate workflows, track field engineers in real-time, and gain centralized
+                        control over your entire service operation.</p>
+                    <div class="hero-cta">
+                        <a href="demo.html" class="btn btn-primary">Start Free Trial</a>
+                        <a href="demo.html" class="btn btn-outline">Watch Demo</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="mockup-body">
+                            <!-- Placeholder for map/dashboard image -->
+                            <div
+                                style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#64748b; font-weight:600;">
+                                Interactive Dashboard Preview
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trusted By -->
+        <section class="trusted-by-section">
+            <div class="container">
+                <p class="trusted-label">TRUSTED BY INNOVATIVE SERVICE TEAMS</p>
+                <div class="logos-grid">
+                    <div class="logo-item">TechFix</div>
+                    <div class="logo-item">RapidRepair</div>
+                    <div class="logo-item">GlobalServe</div>
+                    <div class="logo-item">AutoMotive+</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section id="features" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Everything You Need to Scale</h2>
+                    <p>Comprehensive tools for every stage of your service lifecycle.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card tilt-card">
+                        <div class="feature-icon"><i class="ph ph-ticket"></i></div>
+                        <h3>Smart Ticketing</h3>
+                        <p>Auto-generate tickets from emails and calls. Assign based on skills.</p>
+                    </div>
+                    <div class="feature-card tilt-card">
+                        <div class="feature-icon"><i class="ph ph-map-pin"></i></div>
+                        <h3>Live Tracking</h3>
+                        <p>Real-time visibility of your field workforce. Uber-style tracking links.</p>
+                    </div>
+                    <div class="feature-card tilt-card">
+                        <div class="feature-icon"><i class="ph ph-calendar-check"></i></div>
+                        <h3>Scheduling</h3>
+                        <p>Drag-and-drop calendar with AI-assisted route optimization.</p>
+                    </div>
+                    <div class="feature-card tilt-card">
+                        <div class="feature-icon"><i class="ph ph-chart-bar"></i></div>
+                        <h3>Analytics</h3>
+                        <p>Deep insights into technician performance and service profitability.</p>
+                    </div>
+                    <div class="feature-card tilt-card">
+                        <div class="feature-icon"><i class="ph ph-users"></i></div>
+                        <h3>CRM</h3>
+                        <p>Complete customer history, asset management, and warranty tracking.</p>
+                    </div>
+                    <div class="feature-card tilt-card">
+                        <div class="feature-icon"><i class="ph ph-mobile"></i></div>
+                        <h3>Mobile App</h3>
+                        <p>Native app for technicians to manage jobs, photos, and signatures.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI Calculator -->
+        <section class="section roi-section">
+            <div class="container">
+                <div class="roi-container">
+                    <div class="roi-content">
+                        <h2>Calculate Your Savings</h2>
+                        <p>See how much you can save by optimizing your field operations.</p>
+                    </div>
+                    <div class="roi-calculator">
+                        <div class="roi-input-group">
+                            <label>Number of Technicians</label>
+                            <input type="range" min="1" max="50" value="10" class="roi-slider" id="tech-slider">
+                            <div style="text-align:center; font-weight:600; margin-top:10px;">
+                                <span id="tech-count">10</span> Techs
+                            </div>
+                        </div>
+                        <div class="roi-result">
+                            <div style="font-size:0.9rem; color:#64748b; margin-bottom:5px;">Estimated Monthly Savings
+                            </div>
+                            <div class="roi-amount">$<span id="savings-amount">2,500</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section id="pricing" class="section pricing-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Simple Pricing</h2>
+                    <p>Transparent plans that grow with your business.</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card tilt-card">
+                        <h3>Starter</h3>
+                        <div class="price">$29<span>/mo</span></div>
+                        <p class="plan-desc">For small teams.</p>
+                        <ul class="plan-features">
+                            <li><i class="ph ph-check"></i> Up to 5 Users</li>
+                            <li><i class="ph ph-check"></i> Basic Ticketing</li>
+                        </ul>
+                        <a href="demo.html" class="btn btn-outline full-width">Start Trial</a>
+                    </div>
+                    <div class="pricing-card popular tilt-card">
+                        <div class="popular-tag">Popular</div>
+                        <h3>Professional</h3>
+                        <div class="price">$79<span>/mo</span></div>
+                        <p class="plan-desc">For growing companies.</p>
+                        <ul class="plan-features">
+                            <li><i class="ph ph-check"></i> Up to 20 Users</li>
+                            <li><i class="ph ph-check"></i> Live Tracking</li>
+                            <li><i class="ph ph-check"></i> Route Optimization</li>
+                        </ul>
+                        <a href="demo.html" class="btn btn-primary full-width">Start Trial</a>
+                    </div>
+                    <div class="pricing-card tilt-card">
+                        <h3>Enterprise</h3>
+                        <div class="price">Custom</div>
+                        <p class="plan-desc">For large organizations.</p>
+                        <ul class="plan-features">
+                            <li><i class="ph ph-check"></i> Unlimited Users</li>
+                            <li><i class="ph ph-check"></i> API Access</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline full-width">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section" style="text-align:center; background:#f1f5f9;">
+            <div class="container">
+                <h2>Ready to Transform Your Service Center?</h2>
+                <p style="margin: 20px 0; color: #64748b;">Join 500+ companies using ServiceFlow.</p>
+                <a href="demo.html" class="btn btn-primary">Get Started Now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 ServiceFlow Inc.</p>
+                <div>
+                    <a href="#" style="margin-right:20px; color:#64748b; text-decoration:none;">Privacy</a>
+                    <a href="#" style="color:#64748b; text-decoration:none;">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
