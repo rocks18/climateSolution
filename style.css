@@ -1,60 +1,5 @@
 :root {
-    /* Core Colors - Professional SaaS Palette (Light Mode Default) */
-    --color-primary: #0f172a;
-    /* Deep Navy */
-    --color-primary-light: #1e293b;
-    --color-accent: #0ea5e9;
-    /* Sky Blue */
-    --color-accent-hover: #0284c7;
-    --color-bg: #f8fafc;
-    /* Off-White Background */
-    --color-surface: #ffffff;
-    /* Pure White Surface */
-
-    --color-text-main: #334155;
-    /* Dark Grey */
-    --color-text-heading: #0f172a;
-    /* Navy Black */
-    --color-text-light: #64748b;
-    /* Medium Grey */
-    --color-border: #e2e8f0;
-    /* Light Grey Border */
-
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    --gradient-accent: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
-    --gradient-surface: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-
-    /* Typography */
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-
-    /* Spacing */
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 2rem;
-    --spacing-lg: 4rem;
-    --spacing-xl: 8rem;
-
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-
-    /* Border Radius */
-    --radius-sm: 0.375rem;
-    --radius-md: 0.75rem;
-    --radius-lg: 1.5rem;
-    --radius-full: 9999px;
-
-    /* Section Specific */
-    --color-roi-bg: #0f172a;
-    /* Always Dark Navy in Light Mode */
-    --color-roi-text: #ffffff;
-}
-
-/* Dark Mode Overrides */
-[data-theme="dark"] {
+    /* Core Colors - Permanent Dark Mode */
     --color-primary: #f8fafc;
     /* White text for headings */
     --color-primary-light: #e2e8f0;
@@ -77,13 +22,31 @@
 
     --gradient-primary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     --gradient-surface: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+    --gradient-accent: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
 
+    /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5);
 
-    /* ROI Section in Dark Mode */
+    /* Typography */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1.5rem;
+    --radius-full: 9999px;
+
+    /* Section Specific */
     --color-roi-bg: #1e293b;
     /* Slate 800 */
     --color-roi-text: #f8fafc;
@@ -175,7 +138,8 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(2, 6, 23, 0.9);
+    /* Dark background with opacity */
     backdrop-filter: blur(8px);
     z-index: 1000;
     border-bottom: 1px solid var(--color-border);
@@ -272,7 +236,8 @@ header .container {
 }
 
 .mockup-container {
-    background: white;
+    background: var(--color-surface);
+    /* Dark surface */
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xl);
     border: 1px solid var(--color-border);
@@ -286,7 +251,8 @@ header .container {
 }
 
 .mockup-header {
-    background: #f1f5f9;
+    background: var(--color-bg);
+    /* Darker header */
     padding: 12px;
     border-bottom: 1px solid var(--color-border);
     display: flex;
@@ -313,7 +279,7 @@ header .container {
 
 .mockup-body {
     height: 350px;
-    background: #e2e8f0;
+    background: var(--color-surface);
     position: relative;
     background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDQwaDQwVjBIMHY0MHptMjAgMjBoMjB2MjBIMjBWNjB6TTAgODBocjB2MjBIMFY4MHptMjAgMjBoMjB2MjBIMjB2LTIwek0wIDBocjB2MjBIMFYwem0yMCAyMGgyMHYyMEgyMFYyMHoiIGZpbGw9IiNjYmQ1ZTEiIGZpbGwtb3BhY2l0eT0iMC4yIi8+PC9nPjwvc3ZnPg==');
 }
@@ -366,7 +332,8 @@ header .container {
     font-size: 2rem;
     color: var(--color-accent);
     margin-bottom: var(--spacing-sm);
-    background: #f0f9ff;
+    background: rgba(56, 189, 248, 0.1);
+    /* Transparent accent */
     width: 60px;
     height: 60px;
     display: flex;
@@ -389,7 +356,7 @@ header .container {
 /* Trusted By */
 .trusted-by-section {
     padding: var(--spacing-md) 0;
-    background: white;
+    background: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -418,7 +385,8 @@ header .container {
 /* Support Page Styles */
 .support-hero {
     padding: 180px 0 80px;
-    background: var(--color-primary);
+    background: var(--color-surface);
+    /* Darker hero */
     color: white;
     text-align: center;
 }
@@ -441,8 +409,10 @@ header .container {
     border: none;
     font-size: 1.1rem;
     box-shadow: var(--shadow-lg);
-    background: var(--color-surface);
+    background: var(--color-bg);
+    /* Dark input */
     color: var(--color-text-main);
+    border: 1px solid var(--color-border);
 }
 
 .search-container i {
@@ -735,9 +705,11 @@ header .container {
 
 .roi-result {
     text-align: center;
-    background: #f0f9ff;
+    background: var(--color-bg);
+    /* Darker result box */
     padding: var(--spacing-sm);
     border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
 }
 
 .roi-amount {
@@ -760,7 +732,8 @@ header .container {
 }
 
 .pricing-card {
-    background: white;
+    background: var(--color-surface);
+    /* Dark surface */
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg) var(--spacing-md);
     text-align: center;
@@ -822,7 +795,8 @@ header .container {
 
 /* Footer */
 footer {
-    background: white;
+    background: var(--color-surface);
+    /* Dark footer */
     padding: var(--spacing-lg) 0;
     border-top: 1px solid var(--color-border);
 }
