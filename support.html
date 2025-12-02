@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center | ServiceFlow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" style="text-decoration:none;">
+                <div class="logo">Service<span class="highlight">Flow</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="features.html">Features</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="support.html" class="active">Support</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="btn btn-secondary" aria-label="Toggle Dark Mode">
+                    <i class="ph ph-moon"></i>
+                </button>
+                <a href="demo.html" class="btn btn-primary">Start Free Trial</a>
+            </div>
+            <button class="mobile-menu-toggle"><i class="ph ph-list"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Support Hero -->
+        <section class="support-hero">
+            <div class="container">
+                <h1>How can we help you?</h1>
+                <div class="search-container">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <input type="text" placeholder="Search for articles, guides, and more...">
+                </div>
+            </div>
+        </section>
+
+        <!-- Knowledge Base Categories -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Browse by Category</h2>
+                    <p>Find the answers you need to get the most out of ServiceFlow.</p>
+                </div>
+                <div class="kb-grid">
+                    <a href="#" class="kb-card">
+                        <div class="kb-icon"><i class="ph ph-rocket-launch"></i></div>
+                        <h3>Getting Started</h3>
+                        <p>Setup guide, first steps, and onboarding checklist.</p>
+                    </a>
+                    <a href="#" class="kb-card">
+                        <div class="kb-icon"><i class="ph ph-user-gear"></i></div>
+                        <h3>Account & Billing</h3>
+                        <p>Manage your subscription, users, and permissions.</p>
+                    </a>
+                    <a href="#" class="kb-card">
+                        <div class="kb-icon"><i class="ph ph-wrench"></i></div>
+                        <h3>Technical Support</h3>
+                        <p>Troubleshooting, API docs, and system status.</p>
+                    </a>
+                    <a href="#" class="kb-card">
+                        <div class="kb-icon"><i class="ph ph-device-mobile"></i></div>
+                        <h3>Mobile App</h3>
+                        <p>Guides for iOS and Android field technician apps.</p>
+                    </a>
+                    <a href="#" class="kb-card">
+                        <div class="kb-icon"><i class="ph ph-chart-line-up"></i></div>
+                        <h3>Reporting</h3>
+                        <p>Understanding analytics, exports, and dashboards.</p>
+                    </a>
+                    <a href="#" class="kb-card">
+                        <div class="kb-icon"><i class="ph ph-shield-check"></i></div>
+                        <h3>Security</h3>
+                        <p>Data protection, compliance, and privacy policies.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section" style="background: var(--color-bg);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                <div class="faq-container">
+                    <details class="faq-item">
+                        <summary>How do I add new technicians?</summary>
+                        <div class="faq-content">
+                            <p>Go to Settings > Users > Add New. You can invite them via email. They will receive a link
+                                to set up their password and download the mobile app.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I integrate with QuickBooks?</summary>
+                        <div class="faq-content">
+                            <p>Yes! We support native integrations with QuickBooks Online and Xero. Visit the
+                                Integrations marketplace in your dashboard to connect.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Is there a limit on the number of jobs?</summary>
+                        <div class="faq-content">
+                            <p>No. All plans include unlimited job creation and history. We only charge based on the
+                                number of active users (technicians and admins).</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How does the free trial work?</summary>
+                        <div class="faq-content">
+                            <p>You get full access to the Professional plan for 14 days. No credit card required. At the
+                                end of the trial, you can choose a plan or downgrade to a limited free version.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA -->
+        <section class="section contact-cta">
+            <div class="container">
+                <div class="contact-box">
+                    <h2>Still need help?</h2>
+                    <p>Our support team is available 24/7 to assist you.</p>
+                    <div class="contact-buttons">
+                        <a href="#" class="btn btn-primary"><i class="ph ph-chat-circle-text"></i> Live Chat</a>
+                        <a href="mailto:support@serviceflow.app" class="btn btn-outline"><i class="ph ph-envelope"></i>
+                            Email Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 ServiceFlow Inc.</p>
+                <div>
+                    <a href="support.html"
+                        style="margin-right:20px; color:var(--color-text-light); text-decoration:none;">Help Center</a>
+                    <a href="privacy.html"
+                        style="margin-right:20px; color:var(--color-text-light); text-decoration:none;">Privacy</a>
+                    <a href="terms.html" style="color:var(--color-text-light); text-decoration:none;">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
